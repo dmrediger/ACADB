@@ -112,9 +112,9 @@ wsSameDayData.Range("E4").Value = Mid(text, posPSD + 90, 14)
                 TypeTag = "DEFAULTED"
             End If
 
-        'If this cell has value "11702 CORPORATE" then subsequent cell in column 4 will have an account number which will be used to determine accName Value (Con1 OR Con2)'
-        ElseIf ws1.Cells(posD, 1) = "11702 CORPORATE" Then
-            accName = Switch(ws1.Cells(posD, 4) = "4128175346", "Con1", ws1.Cells(posD, 4) = "4128185220", "Con2")
+        'If this cell has value "CORPORATE" then subsequent cell in column 4 will have an account number which will be used to determine accName Value (Con1 OR Con2)'
+        ElseIf ws1.Cells(posD, 1) = "CORPORATE" Then
+            accName = Switch(ws1.Cells(posD, 4) = "", "Con1", ws1.Cells(posD, 4) = "", "Con2")
         
         'Primary IF with internal looping to handle RECYCLE Day 0 and PROCESSED Day > 0 - These rows will be copied and pasted to corresponding sheet _
         RecycledPayments OR ProcessedPayments where they will be stored for upload to Access DB. The internal loops look for matched payerTag and recycleCount _
@@ -224,9 +224,9 @@ wsSameDayData.Range("E4").Value = Mid(text, posPSD + 90, 14)
     If xConnect.Name = "" Then xConnect.Delete
     Next xConnect
     
-    'This imports all newly added RECYCLED, PROCESSED, and SAMEDAY data to the corresponding Table in the ACADB.accdb Access Database'
+    'This imports all newly added RECYCLED, PROCESSED, and SAMEDAY data to the corresponding Table in the Access Database'
     Dim acc As New Access.Application
-    acc.OpenCurrentDatabase "S:\Cash Management\ACA Database Files\ACADB.accdb"
+    acc.OpenCurrentDatabase ".accdb"
     acc.DoCmd.TransferSpreadsheet _
             TransferType:=acImport, _
             SpreadSheetType:=acSpreadsheetTypeExcel12, _
