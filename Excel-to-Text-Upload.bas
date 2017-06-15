@@ -17,6 +17,9 @@ SavePath = "\savepath"
 FileName = "\filename.csv"
 txtRngCnt = txtSht.UsedRange.Rows.Count
 
+'An alternative path for saving directly to one's desktop'
+'SavePath = "C:\Users\" & Environ$("Username") & "\Desktop"'
+
 'Checks the Error Count and stops the process if an error is detected'
 If errorCnt > 0 Then
 If MsgBox("There are Format Errors with the entry." & Chr(10) & Chr(10) & "Make sure Error Count is ZERO before continuing.", vbOKOnly + vbCritical, "Format Error") = vbOK Then
