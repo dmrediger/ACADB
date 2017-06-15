@@ -1,2 +1,2 @@
-# ACADB
-VBA for Excel tool designed to parse, review, and summarize data for input into Access Database
+# VBA Repository
+Repository of VBA code leveraged for efficiency and automation projects
